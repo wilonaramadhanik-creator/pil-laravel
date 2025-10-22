@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\mahasiswaController;
+use App\Http\Controllers\MahasiswaController as ControllersMahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -14,20 +16,5 @@ use Illuminate\Support\Facades\Route;
 //return view('beranda');
 //});
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('about', function () {
-    return view('about');
-});
-
-Route::get('Mahasiswa', function () {
-    return view('Mahasiswa');
-});
-
-Route::get('profile', function () {
-    $nama = 'wilona';
-    //return view('profile', compact('nama'));
-    return view('profile')->with('nama', $nama);
-});
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
+Route::post('/mahasiswa/store', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
